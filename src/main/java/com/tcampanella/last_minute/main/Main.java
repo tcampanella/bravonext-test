@@ -20,6 +20,7 @@ public class Main {
 		ReceiptList receiptList = new ReceiptList(shoppingList);
 		
 		System.out.println(receiptList);
+		
 	}
 
 }

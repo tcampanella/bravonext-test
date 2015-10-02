@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.tcampanella.last_minute.main;
+package com.tcampanella.last_minute.iface;
 
 import java.math.BigDecimal;
 

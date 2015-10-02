@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.tcampanella.last_minute.main;
 
 import java.io.FileInputStream;
@@ -10,13 +7,14 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tcampanella.last_minute.iface.IList;
 import com.tcampanella.last_minute.util.Util;
 
 /**
  * @author Tommaso Campanella
  *
  */
-public class ShoppingList {
+public class ShoppingList implements IList<ShoppingBasket>{
 	
 	private List<ShoppingBasket> shoppingBaskets = new ArrayList<ShoppingBasket>();
 	private final Util util = new Util();
@@ -31,16 +29,17 @@ public class ShoppingList {
 	
 	public ShoppingList(String fileName) throws UnsupportedEncodingException, FileNotFoundException, IOException {
 		
-		shoppingBaskets.addAll(util.readShoppingList(new FileInputStream("./" + fileName)));
 		
+		shoppingBaskets.addAll(util.readShoppingList(new FileInputStream("./" + fileName)));
+			
 	}
 
-	public List<ShoppingBasket> getShoppingBaskets(){
+	public List<ShoppingBasket> getItems(){
 		
 		return this.shoppingBaskets;
 	}
 	
-	public ShoppingBasket getShoppingBasket(int index) {
+	public ShoppingBasket getItem(int index) {
 		
 		return shoppingBaskets.get(index);
 	}

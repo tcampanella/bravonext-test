@@ -2,6 +2,8 @@ package com.tcampanella.last_minute.main;
 
 import java.math.BigDecimal;
 
+import com.tcampanella.last_minute.iface.Item;
+
 public class Input_Item implements Item{
 	
 	private String name;
@@ -21,7 +23,7 @@ public class Input_Item implements Item{
 		
 	}
 
-	/* (non-Javadoc)
+	/* 
 	 * @see com.tcampanella.last_minute.main.Item#getName()
 	 */
 	public String getName() {
@@ -29,7 +31,7 @@ public class Input_Item implements Item{
 		return this.name;
 	}
 
-	/* (non-Javadoc)
+	/* 
 	 * @see com.tcampanella.last_minute.main.Item#getPrice()
 	 */
 	public BigDecimal getPrice() {
@@ -37,7 +39,7 @@ public class Input_Item implements Item{
 		return this.price;
 	}
 
-	/* (non-Javadoc)
+	/* 
 	 * @see com.tcampanella.last_minute.main.Item#getAmount()
 	 */
 	public int getAmount() {
@@ -50,7 +52,7 @@ public class Input_Item implements Item{
 		return this.exempted;
 	}
 
-	/* (non-Javadoc)
+	/* 
 	 * @see com.tcampanella.last_minute.main.Item#isImported()
 	 */
 	public boolean isImported() {

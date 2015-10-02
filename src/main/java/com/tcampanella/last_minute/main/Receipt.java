@@ -7,11 +7,15 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tcampanella.last_minute.iface.IReceipt;
+import com.tcampanella.last_minute.iface.IReference;
+import com.tcampanella.last_minute.iface.Item;
+
 /**
  * @author Tommaso Campanella
  *
  */
-public class Recepit implements IReference<ShoppingBasket>{
+public class Receipt implements IReference<ShoppingBasket>, IReceipt {
 	
 	private final ShoppingBasket shoppingBasket;
 	private final List<Item> items = new ArrayList<Item>();	
@@ -23,7 +27,7 @@ public class Recepit implements IReference<ShoppingBasket>{
 
 	private BigDecimal total_taxes = new BigDecimal("0.0");
 	
-	public Recepit(ShoppingBasket shoppingBasket) {
+	public Receipt(ShoppingBasket shoppingBasket) {
 		
 		this.shoppingBasket = shoppingBasket;
 		generateReceipt();
@@ -36,11 +40,8 @@ public class Recepit implements IReference<ShoppingBasket>{
 			
 			Item receiptItem = new Output_Item(inputItem);
 			total_cost = total_cost.add(receiptItem.getPrice().multiply(new BigDecimal(""+receiptItem.getAmount())));
-			
 			total_taxes = total_taxes.add(receiptItem.getPrice().subtract(((Output_Item)receiptItem).getReference().getPrice()));
-			
-			//System.out.println("item price: " + inputItem.getPrice() + " item price with taxes: " + receiptItem.getPrice());
-			//System.out.println("total: " + total_cost + " -- " + total_taxes );
+
 			items.add(receiptItem);
 			
 		}
@@ -61,6 +62,11 @@ public class Recepit implements IReference<ShoppingBasket>{
 	public List<Item> getItems() {
 		
 		return items;
+	}
+	
+	public Item getItem(int index) {
+		
+		return items.get(index);
 	}
 
 	/* (non-Javadoc)
@@ -84,5 +90,5 @@ public class Recepit implements IReference<ShoppingBasket>{
 		return string.toString();
 		
 	}
-	
+
 }

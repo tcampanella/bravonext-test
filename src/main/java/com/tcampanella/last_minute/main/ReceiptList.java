@@ -1,21 +1,23 @@
-/**
- * 
- */
 package com.tcampanella.last_minute.main;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tcampanella.last_minute.iface.IList;
+import com.tcampanella.last_minute.iface.IReference;
+
 /**
  * @author Tommaso Campanella
  *
  */
-public class ReceiptList {
+public class ReceiptList implements IList<Receipt>, IReference<ShoppingList> {
 
-	private List<Recepit> recepits = new ArrayList<Recepit>();
+	private List<Receipt> recepits = new ArrayList<Receipt>();
+	private ShoppingList shoppingList;
 	
 	public ReceiptList(ShoppingList shoppingList) {
 		
+		this.shoppingList = shoppingList;
 		populateReceiptList(shoppingList);
 		
 	}
@@ -25,19 +27,19 @@ public class ReceiptList {
 	 */
 	private void populateReceiptList(ShoppingList shoppingList) {
 		
-		for(ShoppingBasket shoppingBasket: shoppingList.getShoppingBaskets()) {
+		for(ShoppingBasket shoppingBasket: shoppingList.getItems()) {
 			
-			recepits.add(new Recepit(shoppingBasket));
+			recepits.add(new Receipt(shoppingBasket));
 			
 		}
 	}
 
-	public List<Recepit> getReceipts(){
+	public List<Receipt> getItems(){
 		
 		return this.recepits;
 	}
 	
-	public Recepit getReceipt(int index) {
+	public Receipt getItem(int index) {
 		
 		return recepits.get(index);
 	}
@@ -47,7 +49,7 @@ public class ReceiptList {
 		
 		StringBuilder string = new StringBuilder();
         int index = 1;
-		for(Recepit recepit : recepits){
+		for(Receipt recepit : recepits){
 			string.append("Output " + index + ":\n");
 			string.append(recepit);
 			index++;
@@ -55,5 +57,10 @@ public class ReceiptList {
 
 		return string.toString();
 		 
+	}
+	
+	public ShoppingList getReference() {
+		
+		return this.shoppingList;
 	}
 }

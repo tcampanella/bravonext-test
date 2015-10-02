@@ -2,6 +2,8 @@ package com.tcampanella.last_minute.main;
 
 import java.math.BigDecimal;
 
+import com.tcampanella.last_minute.iface.IReference;
+import com.tcampanella.last_minute.iface.Item;
 import com.tcampanella.last_minute.util.Util;
 
 public class Output_Item implements Item, IReference<Item> {
@@ -18,7 +20,6 @@ public class Output_Item implements Item, IReference<Item> {
 	public Output_Item(Item input_Item) {
 		
 		this.input_Item = input_Item;
-		
 		this.name = input_Item.getName();
 		this.amount = input_Item.getAmount();
 		this.exempted = input_Item.isExempted();
