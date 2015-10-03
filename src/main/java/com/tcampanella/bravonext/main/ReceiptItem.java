@@ -1,10 +1,10 @@
-package com.tcampanella.last_minute.main;
+package com.tcampanella.bravonext.main;
 
 import java.math.BigDecimal;
 
-import com.tcampanella.last_minute.iface.IReference;
-import com.tcampanella.last_minute.iface.Item;
-import com.tcampanella.last_minute.util.Util;
+import com.tcampanella.bravonext.iface.IReference;
+import com.tcampanella.bravonext.iface.Item;
+import com.tcampanella.bravonext.util.Util;
 
 /**
  * 

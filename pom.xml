@@ -5,8 +5,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.tcampanella.last_minute</groupId>
-	<artifactId>last_minute_exercise</artifactId>
+	<groupId>com.tcampanella.bravonext</groupId>
+	<artifactId>bravonext_test</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
   
@@ -64,13 +64,13 @@
 					<archive>
 					<manifest>
 						<addClasspath>true</addClasspath>
-						<mainClass>com.tcampanella.last_minute.main.Main</mainClass>
+						<mainClass>com.tcampanella.bravonext.main.Main</mainClass>
 					</manifest>
 					</archive>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
-					<finalName>lastMinute</finalName>
+					<finalName>bravonextTest</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
 					<attach>false</attach>
 				</configuration>

@@ -1,4 +1,4 @@
-package com.tcampanella.last_minute.main;
+package com.tcampanella.bravonext.main;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,8 +7,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tcampanella.last_minute.iface.IShoppingList;
-import com.tcampanella.last_minute.util.Util;
+import com.tcampanella.bravonext.iface.IShoppingList;
+import com.tcampanella.bravonext.util.Util;
 
 /**
  * @author Tommaso Campanella

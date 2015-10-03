@@ -1,6 +1,6 @@
-package com.tcampanella.last_minute.iface;
+package com.tcampanella.bravonext.iface;
 
-import com.tcampanella.last_minute.main.ShoppingBasket;
+import com.tcampanella.bravonext.main.ShoppingBasket;
 
 /**
  * @author Tommaso Campanella

@@ -1,10 +1,10 @@
-package com.tcampanella.last_minute.test.main;
+package com.tcampanella.bravonext.test.main;
 
 import org.junit.Test;
 
-import com.tcampanella.last_minute.iface.Item;
-import com.tcampanella.last_minute.main.ShoppingItem;
-import com.tcampanella.last_minute.main.ReceiptItem;
+import com.tcampanella.bravonext.iface.Item;
+import com.tcampanella.bravonext.main.ReceiptItem;
+import com.tcampanella.bravonext.main.ShoppingItem;
 
 import static org.junit.Assert.*;
 

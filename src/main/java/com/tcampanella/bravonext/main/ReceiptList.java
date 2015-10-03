@@ -1,11 +1,11 @@
-package com.tcampanella.last_minute.main;
+package com.tcampanella.bravonext.main;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tcampanella.last_minute.iface.IList;
-import com.tcampanella.last_minute.iface.IReference;
-import com.tcampanella.last_minute.iface.IShoppingList;
+import com.tcampanella.bravonext.iface.IList;
+import com.tcampanella.bravonext.iface.IReference;
+import com.tcampanella.bravonext.iface.IShoppingList;
 
 /**
  * @author Tommaso Campanella

@@ -1,8 +1,8 @@
-package com.tcampanella.last_minute.test.main;
+package com.tcampanella.bravonext.test.main;
 
 import org.junit.Test;
 
-import com.tcampanella.last_minute.main.ShoppingList;
+import com.tcampanella.bravonext.main.ShoppingList;
 
 import static org.junit.Assert.*;
 

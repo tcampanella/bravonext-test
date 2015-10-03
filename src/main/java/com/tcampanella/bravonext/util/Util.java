@@ -1,4 +1,4 @@
-package com.tcampanella.last_minute.util;
+package com.tcampanella.bravonext.util;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -11,10 +11,10 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tcampanella.last_minute.iface.IUtil;
-import com.tcampanella.last_minute.iface.Item;
-import com.tcampanella.last_minute.main.ShoppingItem;
-import com.tcampanella.last_minute.main.ShoppingBasket;
+import com.tcampanella.bravonext.iface.IUtil;
+import com.tcampanella.bravonext.iface.Item;
+import com.tcampanella.bravonext.main.ShoppingBasket;
+import com.tcampanella.bravonext.main.ShoppingItem;
 
 /**
  * @author Tommaso Campanella

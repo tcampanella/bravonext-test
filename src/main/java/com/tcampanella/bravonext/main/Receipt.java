@@ -1,13 +1,13 @@
-package com.tcampanella.last_minute.main;
+package com.tcampanella.bravonext.main;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tcampanella.last_minute.iface.IReceipt;
-import com.tcampanella.last_minute.iface.IReference;
-import com.tcampanella.last_minute.iface.IShoppingBasket;
-import com.tcampanella.last_minute.iface.Item;
+import com.tcampanella.bravonext.iface.IReceipt;
+import com.tcampanella.bravonext.iface.IReference;
+import com.tcampanella.bravonext.iface.IShoppingBasket;
+import com.tcampanella.bravonext.iface.Item;
 
 /**
  * @author Tommaso Campanella

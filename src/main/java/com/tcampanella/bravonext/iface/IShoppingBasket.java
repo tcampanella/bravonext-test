@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.tcampanella.last_minute.iface;
+package com.tcampanella.bravonext.iface;
 
 /**
  * @author Tommaso Campanella

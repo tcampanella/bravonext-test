@@ -1,4 +1,4 @@
-package com.tcampanella.last_minute.test.util;
+package com.tcampanella.bravonext.test.util;
 
 import static org.junit.Assert.*;
 
@@ -11,10 +11,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.tcampanella.last_minute.iface.Item;
-import com.tcampanella.last_minute.main.ShoppingItem;
-import com.tcampanella.last_minute.main.ShoppingBasket;
-import com.tcampanella.last_minute.util.Util;
+import com.tcampanella.bravonext.iface.Item;
+import com.tcampanella.bravonext.main.ShoppingBasket;
+import com.tcampanella.bravonext.main.ShoppingItem;
+import com.tcampanella.bravonext.util.Util;
 
 /**
  * 

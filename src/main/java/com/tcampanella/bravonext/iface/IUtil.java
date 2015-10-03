@@ -1,4 +1,4 @@
-package com.tcampanella.last_minute.iface;
+package com.tcampanella.bravonext.iface;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,7 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.tcampanella.last_minute.main.ShoppingBasket;
+import com.tcampanella.bravonext.main.ShoppingBasket;
 
 /**
  * @author Tommaso Campanella

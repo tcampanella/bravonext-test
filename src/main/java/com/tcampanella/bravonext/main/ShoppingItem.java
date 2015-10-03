@@ -1,8 +1,8 @@
-package com.tcampanella.last_minute.main;
+package com.tcampanella.bravonext.main;
 
 import java.math.BigDecimal;
 
-import com.tcampanella.last_minute.iface.Item;
+import com.tcampanella.bravonext.iface.Item;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package com.tcampanella.last_minute.test.main;
+package com.tcampanella.bravonext.test.main;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,8 +6,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import com.tcampanella.last_minute.main.ReceiptList;
-import com.tcampanella.last_minute.main.ShoppingList;
+import com.tcampanella.bravonext.main.ReceiptList;
+import com.tcampanella.bravonext.main.ShoppingList;
 
 /**
  * @author Tommaso Campanella
