@@ -11,20 +11,34 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tcampanella.last_minute.iface.IUtil;
 import com.tcampanella.last_minute.iface.Item;
-import com.tcampanella.last_minute.main.Input_Item;
+import com.tcampanella.last_minute.main.ShoppingItem;
 import com.tcampanella.last_minute.main.ShoppingBasket;
 
 /**
  * @author Tommaso Campanella
  *
+ * Utility class
  */
-public class Util {
+public class Util implements IUtil {
 	
+	/**
+	 * Standard increment for rounding up sales taxes amount
+	 */
 	private final BigDecimal increment = new BigDecimal("0.05");
+	
+	/**
+	 * Hard coded exemption list
+	 */
 	public static final String[] exemptions = new String[] { "chocolate","book","headache pills"};
 
-	public boolean isExempted(String name) {
+	/**
+	 * 
+	 * @param name
+	 * @return true if the Item is tax exempt
+	 */
+	public boolean isExempt(String name) {
 		
 		boolean exempted = false;
 		
@@ -38,6 +52,12 @@ public class Util {
 		return exempted;
 	}
 	
+	/**
+	 * 
+	 * @param item
+	 * @return the amount of taxes based of the Item
+	 * 		   given as parameter
+	 */
 	public BigDecimal calculateTaxes(Item item) {
 		
 		BigDecimal taxes = null;
@@ -62,29 +82,60 @@ public class Util {
 		
 	}
 	
-	public BigDecimal roundNumber(BigDecimal numberTobeRounded) {
+	/**
+	 * Method to round up a number by a standard increment
+	 * @param numberTobeRounded
+	 * @return rounded "numberTobeRounded"
+	 */
+	public BigDecimal roundNumber(BigDecimal numberToBeRounded) {
 		
-		return (numberTobeRounded.divide(increment,0,RoundingMode.UP)).multiply(increment);
+		return roundNumber(numberToBeRounded,this.increment);
 	}
 	
-	public  List<ShoppingBasket> readShoppingList(FileInputStream inputStream) throws UnsupportedEncodingException, IOException, FileNotFoundException {
+	/**
+	 * Method to round up a number by a given increment
+	 * 
+	 * @param numberTobeRounded
+	 * @param increment
+	 * @return rounded "numberTobeRounded"
+	 */
+	public BigDecimal roundNumber(BigDecimal numberToBeRounded, BigDecimal increment) {
+		
+		return (numberToBeRounded.divide(increment,0,RoundingMode.UP)).multiply(increment);
+	}
+	
+	/**
+	 * Method to read a ShoppingList from a text file
+	 * N.B.: the file MUST be UTF-8 formatted
+	 * 
+	 * @param inputStream
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
+	public  List<ShoppingBasket> readShoppingList(FileInputStream inputStream) 
+				throws UnsupportedEncodingException, IOException, FileNotFoundException {
 		
 		List<ShoppingBasket> shoppingBaskets = new ArrayList<ShoppingBasket>();
-		List<Item> items = new ArrayList<Item>();
+		List<Item> shoppintItems = new ArrayList<Item>();
 		 
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
 		    
 			String line = br.readLine();
 
 		    /**
-		     * First a number
-		     * then a String concluded by "at"
-		     * then a number
+		     * 1) First a number
+		     * 2) then a String concluded by "at"
+		     * 3) then a number
 		     * 
 		     */
 		    
 		    while (line != null) {
 		    	
+		    	/**
+		    	 * Skip any empty line
+		    	 */
 		    	if(line.length() == 0) {
 		    		
 		    		line = br.readLine();
@@ -95,38 +146,43 @@ public class Util {
 		    	if(line.toLowerCase().startsWith("input")){
 		    		
 		    		line = br.readLine();
-		    		items.clear();
+		    		
+		    		/**
+		    		 * Reset the list of ShoppingItems
+		    		 */
+		    		shoppintItems.clear();
 		    		
 		    		while(line != null && line.length() > 0) {
 		    	
+		    			/**
+		    			 * Initialise variables
+		    			 */
 				    	int amount = -1;
 				    	String name = null;
 				    	BigDecimal price = null;
 				    	boolean imported = false;
 				    	
-						String numbers[] = line.split(" ",2);
+						String firstString[] = line.split(" ",2);
+						amount = Integer.parseInt(firstString[0]);
 						
-						amount = Integer.parseInt(numbers[0]);
+						String secondString[] = firstString[1].split(" at ",2);
 						
-						String following = numbers[1];
-						String numbers2[] = following.split(" at ",2);
-						
-						if(numbers2[0].contains("imported"))
+						if(secondString[0].contains("imported"))
 							imported = true;
 		
-						name = numbers2[0];
+						name = secondString[0];
+						price = new BigDecimal(secondString[1].trim());
 						
-						price = new BigDecimal(numbers2[1].trim());
-						
-				    	items.add(new Input_Item(name, price, amount, isExempted(name), imported));
+						shoppintItems.add(new ShoppingItem(name, price, amount, isExempt(name), imported));
 				    	
 				        line = br.readLine();
 				        
 		    		}
 		    		
-		    		shoppingBaskets.add(new ShoppingBasket(items));
+		    		shoppingBaskets.add(new ShoppingBasket(shoppintItems));
 			        
 		    	} 
+		    	
 			}
 		    
 		}

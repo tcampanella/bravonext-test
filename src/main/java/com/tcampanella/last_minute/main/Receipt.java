@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.tcampanella.last_minute.main;
 
 import java.math.BigDecimal;
@@ -9,24 +6,43 @@ import java.util.List;
 
 import com.tcampanella.last_minute.iface.IReceipt;
 import com.tcampanella.last_minute.iface.IReference;
+import com.tcampanella.last_minute.iface.IShoppingBasket;
 import com.tcampanella.last_minute.iface.Item;
 
 /**
  * @author Tommaso Campanella
+ * 
+ * Class representing a Receipt
  *
  */
 public class Receipt implements IReference<ShoppingBasket>, IReceipt {
 	
-	private final ShoppingBasket shoppingBasket;
-	private final List<Item> items = new ArrayList<Item>();	
-	
-	private BigDecimal total_cost = new BigDecimal("0.0");
 	/**
-	 * @return the total_cost
+	 * List of ReceiptItem
 	 */
-
+	private final List<Item> receiptItems = new ArrayList<Item>();	
+	
+	/**
+	 * Total cost of the Receipt (including taxes)
+	 */
+	private BigDecimal total_cost = new BigDecimal("0.0");
+	
+	/**
+	 * Total taxes of the Receipt
+	 */
 	private BigDecimal total_taxes = new BigDecimal("0.0");
 	
+	/**
+	 * Reference to the ShoppingBasket a Receipt
+	 * is created from
+	 */
+	private final IShoppingBasket shoppingBasket;
+	
+	
+	/**
+	 * 
+	 * @param shoppingBasket
+	 */
 	public Receipt(ShoppingBasket shoppingBasket) {
 		
 		this.shoppingBasket = shoppingBasket;
@@ -34,15 +50,20 @@ public class Receipt implements IReference<ShoppingBasket>, IReceipt {
 		
 	}
 	
+	/**
+	 * Method to populate a Receipt from a ShoppingBasket
+	 */
 	private void generateReceipt() {
 		
-		for(Item inputItem : shoppingBasket.getItems()) {
+		for(Item shoppingItem : shoppingBasket.getItems()) {
 			
-			Item receiptItem = new Output_Item(inputItem);
-			total_cost = total_cost.add(receiptItem.getPrice().multiply(new BigDecimal(""+receiptItem.getAmount())));
-			total_taxes = total_taxes.add(receiptItem.getPrice().subtract(((Output_Item)receiptItem).getReference().getPrice()));
+			Item receiptItem = new ReceiptItem(shoppingItem);
+			total_cost = 
+					total_cost.add(receiptItem.getPrice().multiply(new BigDecimal(""+receiptItem.getAmount())));
+			total_taxes = 
+					total_taxes.add(receiptItem.getPrice().subtract(((ReceiptItem)receiptItem).getReference().getPrice()));
 
-			items.add(receiptItem);
+			receiptItems.add(receiptItem);
 			
 		}
 		
@@ -59,36 +80,52 @@ public class Receipt implements IReference<ShoppingBasket>, IReceipt {
 		return total_taxes;
 	}
 	
-	public List<Item> getItems() {
-		
-		return items;
-	}
-	
-	public Item getItem(int index) {
-		
-		return items.get(index);
-	}
-
-	/* (non-Javadoc)
+	/* 
 	 * @see com.tcampanella.last_minute.main.IReference#getReference()
 	 */
 	public ShoppingBasket getReference() {
-		// TODO Auto-generated method stub
-		return this.shoppingBasket;
+
+		return (ShoppingBasket) this.shoppingBasket;
 	}
 	
+	/**
+	 * The following method will return a String formatted as follows:
+	 * 
+	 	1 book : 12.49
+		1 music CD: 16.49
+		1 chocolate bar: 0.85
+		
+		Sales Taxes: 1.50 Total: 29.83
+		
+	 */
 	@Override
 	public String toString() {
 	
 		StringBuilder string = new StringBuilder();
         
-		for(Item item : items)
+		for(Item item : receiptItems)
 			string.append(""+item.getAmount() + " "+item.getName() + ": " + item.getPrice() +"\n"); 
 
 		string.append("\nSales Taxes: " + this.getTotal_taxes() + " Total: " + this.getTotal_cost()+"\n\n");
 		
 		return string.toString();
 		
+	}
+	
+	/* 
+	 * @see com.tcampanella.last_minute.main.IList#getItems()
+	 */
+	public List<Item> getItems() {
+		
+		return receiptItems;
+	}
+	
+	/* 
+	 * @see com.tcampanella.last_minute.main.IList#getItem(int index)
+	 */
+	public Item getItem(int index) {
+		
+		return receiptItems.get(index);
 	}
 
 }

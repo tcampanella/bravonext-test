@@ -4,16 +4,42 @@ import java.math.BigDecimal;
 
 import com.tcampanella.last_minute.iface.Item;
 
-public class Input_Item implements Item{
+/**
+ * 
+ * @author Tommaso Campanella
+ *
+ * Class representing a single Item in a Shopping Basket
+ */
+
+public class ShoppingItem implements Item{
 	
+	/**
+	 *  Item name
+	 */
 	private String name;
+	
+	/**
+	 * Item price (before taxes)
+	 */
 	private BigDecimal price;
+	
+	/**
+	 * Number of items
+	 */
 	private int amount;
-	private boolean exempted;
+
+	/**
+	 * Good exempted from basic sales taxes
+	 */
+	boolean exempted;
+	
+	/**
+	 * Good imported
+	 */
 	private boolean imported;
 	
 	
-	public Input_Item(String name,BigDecimal price, int amount, boolean exempted, boolean imported) {
+	public ShoppingItem(String name,BigDecimal price, int amount, boolean exempted, boolean imported) {
 		
 		this.name = name;
 		this.price = price;
@@ -27,7 +53,7 @@ public class Input_Item implements Item{
 	 * @see com.tcampanella.last_minute.main.Item#getName()
 	 */
 	public String getName() {
-		// TODO Auto-generated method stub
+
 		return this.name;
 	}
 
@@ -35,7 +61,7 @@ public class Input_Item implements Item{
 	 * @see com.tcampanella.last_minute.main.Item#getPrice()
 	 */
 	public BigDecimal getPrice() {
-		// TODO Auto-generated method stub
+
 		return this.price;
 	}
 
@@ -43,12 +69,12 @@ public class Input_Item implements Item{
 	 * @see com.tcampanella.last_minute.main.Item#getAmount()
 	 */
 	public int getAmount() {
-		// TODO Auto-generated method stub
+
 		return this.amount;
 	}
 	
 	public boolean isExempted() {
-		// TODO Auto-generated method stub
+
 		return this.exempted;
 	}
 
@@ -56,7 +82,7 @@ public class Input_Item implements Item{
 	 * @see com.tcampanella.last_minute.main.Item#isImported()
 	 */
 	public boolean isImported() {
-		// TODO Auto-generated method stub
+
 		return this.imported;
 	}
 

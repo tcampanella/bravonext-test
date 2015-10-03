@@ -8,25 +8,42 @@ import com.tcampanella.last_minute.iface.Item;
 
 /**
  * @author Tommaso Campanella
+ * 
+ * Class representing a Shopping Basket
  *
  */
 public class ShoppingBasket implements IShoppingBasket {
 	
-	private final List<Item> items = new ArrayList<Item>();
+	/**
+	 * List of ShoppingItems
+	 */
+	private final List<Item> shoppingIems = new ArrayList<Item>();
 	
-	public ShoppingBasket(List<Item> items) {
+	/**
+	 * 
+	 * A ShoppingBasket is created out of a list of ShoppingItems
+	 * 
+	 * @param shoppingIems
+	 */
+	public ShoppingBasket(List<Item> shoppingIems) {
 	
-		this.items.addAll(items);
+		this.shoppingIems.addAll(shoppingIems);
 	}
 	
+	/* 
+	 * @see com.tcampanella.last_minute.main.IList#getItems()
+	 */
 	public List<Item> getItems() {
 		
-		return items;
+		return shoppingIems;
 	}
 	
+	/* 
+	 * @see com.tcampanella.last_minute.main.IList#getItem(int index)
+	 */
 	public Item getItem(int index) {
 		
-		return this.items.get(index);
+		return this.shoppingIems.get(index);
 	}
 
 }

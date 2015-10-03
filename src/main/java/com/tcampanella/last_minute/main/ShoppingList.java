@@ -7,14 +7,14 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tcampanella.last_minute.iface.IList;
+import com.tcampanella.last_minute.iface.IShoppingList;
 import com.tcampanella.last_minute.util.Util;
 
 /**
  * @author Tommaso Campanella
  *
  */
-public class ShoppingList implements IList<ShoppingBasket>{
+public class ShoppingList implements IShoppingList {
 	
 	private List<ShoppingBasket> shoppingBaskets = new ArrayList<ShoppingBasket>();
 	private final Util util = new Util();

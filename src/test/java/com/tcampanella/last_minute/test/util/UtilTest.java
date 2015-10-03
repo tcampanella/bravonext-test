@@ -12,20 +12,21 @@ import java.util.List;
 import org.junit.Test;
 
 import com.tcampanella.last_minute.iface.Item;
-import com.tcampanella.last_minute.main.Input_Item;
+import com.tcampanella.last_minute.main.ShoppingItem;
 import com.tcampanella.last_minute.main.ShoppingBasket;
 import com.tcampanella.last_minute.util.Util;
 
 /**
  * 
- * 
  * @author Tommaso Campanella
+ * 
+ *  JUnit test case for the class Util
  *
  */
 public class UtilTest {
 	
 	@Test
-	public void testIsExempted() {
+	public void testisExempt() {
 		
 		/**
 		 * Create a new Util class
@@ -33,12 +34,16 @@ public class UtilTest {
 		
 		Util util = new Util();
 		
-		assertTrue(util.isExempted("book"));
-		assertTrue(util.isExempted("Book"));
+		/**
+		 * Check the correct behaviour of isExempt(String name)
+		 * 
+		 * exemption list --> { "chocolate","book","headache pills"}
+		 */
 		
-		assertFalse(util.isExempted("music CD"));
-		
-		assertTrue(util.isExempted("headache pills"));
+		assertTrue(util.isExempt("book"));
+		assertTrue(util.isExempt("Book"));
+		assertFalse(util.isExempt("music CD"));
+		assertTrue(util.isExempt("headache pills"));
 		
 	}
 	
@@ -52,18 +57,18 @@ public class UtilTest {
 		Util util = new Util();
 		
 		/**
-		 * Create a new Item
+		 * Check the correct behaviour of calculateTaxes(Item item)
 		 */
 		
-		Item item1 = new Input_Item("name", new BigDecimal("1.51"), 1, true, true);
+		Item item1 = new ShoppingItem("name", new BigDecimal("1.51"), 1, true, true);
 		
 		assertTrue(util.calculateTaxes(item1).compareTo(new BigDecimal("0.10")) == 0);
 		
-		Item item2 = new Input_Item("name", new BigDecimal("1.51"), 1, false, true);
+		Item item2 = new ShoppingItem("name", new BigDecimal("1.51"), 1, false, true);
 		
 		assertTrue(util.calculateTaxes(item2).compareTo(new BigDecimal("0.25")) == 0);
 		
-		Item item3 = new Input_Item("name", new BigDecimal("1.51"), 1, false, false);
+		Item item3 = new ShoppingItem("name", new BigDecimal("1.51"), 1, false, false);
 		
 		assertTrue(util.calculateTaxes(item3).compareTo(new BigDecimal("0.20")) == 0);
 		
@@ -77,6 +82,10 @@ public class UtilTest {
 		 */
 		
 		Util util = new Util();
+		
+		/**
+		 * Check the correct behaviour of roundNumber(BigDecimal numberToBeRounded)
+		 */
 		
 		assertTrue(util.roundNumber(new BigDecimal("0.013")).compareTo(new BigDecimal("0.05")) == 0);
 		
@@ -95,27 +104,51 @@ public class UtilTest {
 		
 		Util util = new Util();
 		
+		/**
+		 * Create a new list of ShoppingBasket
+		 */
+		
 		List<ShoppingBasket> shoppingBaskets = new ArrayList<ShoppingBasket>();
 		
 		try {
+			/**
+			 * Check the correct behaviour of readShoppingList(FileInputStream inputStream)
+			 */
 			shoppingBaskets = util.readShoppingList(new FileInputStream("./" + "file.txt"));
+
 		} catch (IOException e) {
 			// should not be reached
+			
 			e.printStackTrace();
 		}
+		
+		/**
+		 * Check that the list has been
+		 * correctly populated
+		 */
 		
 		assertTrue(shoppingBaskets.size() == 6);
 		assertTrue(shoppingBaskets.get(0).getItem(0).getName().equals("book"));
 		
+		/**
+		 * Check that readShoppingList(FileInputStream inputStream), if invoked
+		 * with a not existing file name, it would throw a FileNotFoundException
+		 */
+		
 		FileNotFoundException fileNotFoundException = null;
 		
 		try {
+			
 			shoppingBaskets = util.readShoppingList(new FileInputStream("./" + "file_not_existing.txt"));
+		
 		} catch (FileNotFoundException e) {
 			// should not be reached
+		
 			fileNotFoundException = e;
+	
 		} catch (IOException e) {
 			// should not be reached
+		
 			e.printStackTrace();
 		}
 		

@@ -11,6 +11,8 @@ import com.tcampanella.last_minute.main.ShoppingList;
 
 /**
  * @author Tommaso Campanella
+ * 
+ * JUnit test case for the class ReceiptList
  *
  */
 public class ReceiptListTest {
@@ -25,9 +27,15 @@ public class ReceiptListTest {
 		ShoppingList shoppingList = null;
 		
 		try {
+			/**
+			 * the standard "file.txt" is used
+			 * to populated the ShoppingList
+			 */
 			shoppingList = new ShoppingList();
+			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
+			// Should not happen
 			e.printStackTrace();
 		}
 		
@@ -37,8 +45,17 @@ public class ReceiptListTest {
 		
 		ReceiptList receiptList = new ReceiptList(shoppingList);
 		
+		/**
+		 * Check that the ReceiptList has been correctly generated
+		 * from shoppingList
+		 */
 		assertTrue(receiptList.getItems().size() > 0);
 		assertTrue(receiptList.getItem(0).getItems().size() > 0);
+		assertTrue(receiptList.getItem(0).getItem(0).getName().equals(receiptList.getReference().getItem(0).getItem(0).getName()));
+		
+		/**
+		 * Check that the getReference returns the correct ShoppingList
+		 */
 		assertTrue(receiptList.getReference().equals(shoppingList));
 		
 	}
