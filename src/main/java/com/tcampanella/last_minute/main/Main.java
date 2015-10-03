@@ -2,9 +2,6 @@ package com.tcampanella.last_minute.main;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.math.BigDecimal;
-
-import com.tcampanella.last_minute.util.Util;
 
 /**
  * @author Tommaso Campanella

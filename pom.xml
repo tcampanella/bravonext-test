@@ -7,10 +7,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.tcampanella.last_minute</groupId>
 	<artifactId>last_minute_exercise</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
   
 	<properties>
 	
+		<jdk.version>1.8</jdk.version>
 	 	<junit.version>4.12</junit.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
@@ -34,6 +36,48 @@
 	
 	<build>
 	
+		<plugins>
+				
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+				<source>${jdk.version}</source>
+				<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<!-- NOTE: We don't need a groupId specification because the group is org.apache.maven.plugins ...which is assumed by default. -->
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.5</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+    
+				<configuration>
+					<archive>
+					<manifest>
+						<addClasspath>true</addClasspath>
+						<mainClass>com.tcampanella.last_minute.main.Main</mainClass>
+					</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<finalName>lastMinute</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
+					<attach>false</attach>
+				</configuration>
+			</plugin>
+		
+		</plugins>
+		
 	</build>
 	
 	
