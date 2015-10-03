@@ -18,7 +18,7 @@ public class ShoppingList implements IShoppingList {
 	
 	private List<ShoppingBasket> shoppingBaskets = new ArrayList<ShoppingBasket>();
 	private final Util util = new Util();
-	private final static String DEFAULT_FILE_NAME = "file.txt";
+	private final static String DEFAULT_FILE_NAME = "shoppingList.txt";
 	
 	
 	public ShoppingList() throws UnsupportedEncodingException, FileNotFoundException, IOException {

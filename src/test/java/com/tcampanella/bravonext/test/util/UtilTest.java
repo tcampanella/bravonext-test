@@ -114,7 +114,7 @@ public class UtilTest {
 			/**
 			 * Check the correct behaviour of readShoppingList(FileInputStream inputStream)
 			 */
-			shoppingBaskets = util.readShoppingList(new FileInputStream("./" + "file.txt"));
+			shoppingBaskets = util.readShoppingList(new FileInputStream("./" + "shoppingList.txt"));
 
 		} catch (IOException e) {
 			// should not be reached
