@@ -15,3 +15,5 @@ The project has been conceived as follows:
 
 Two main entities exist, ShoppingList and ReceiptList, which contain respectively a list of ShoppingBaskets (a series of items to be bought) and Receipts (a series of items just bought, together with the total cost and amount of taxes). A ReceiptList is created out of an Existing ShoppingList, which must be created (instantiated) before it (the same concept is applied to Receipts-ShoppingBaskets and ReceiptItems-ShoppingItems). 
 A ShoppingBasket contains a variable number of ShoppingItems, while a Receipt contains a variable number of ReceiptItems. Each ReceiptItem, Receipt and ReceiptList will always have access to the corresponding entity (ShoppingItem, ShoppingBasket, ShoppingList).
+
+No additional library/framework has been used in this project
